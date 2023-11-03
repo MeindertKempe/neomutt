@@ -512,19 +512,6 @@ enum CommandResult mutt_parse_unbind(struct Buffer *buf, struct Buffer *s,
     if (all_keys)
     {
       km_unbind_all(&Keymaps[i], data);
-      km_bindkey("<enter>", MENU_GENERIC, OP_GENERIC_SELECT_ENTRY);
-      km_bindkey("<return>", MENU_GENERIC, OP_GENERIC_SELECT_ENTRY);
-      km_bindkey("<enter>", MENU_INDEX, OP_DISPLAY_MESSAGE);
-      km_bindkey("<return>", MENU_INDEX, OP_DISPLAY_MESSAGE);
-      km_bindkey("<backspace>", MENU_EDITOR, OP_EDITOR_BACKSPACE);
-      km_bindkey("\177", MENU_EDITOR, OP_EDITOR_BACKSPACE);
-      km_bindkey(":", MENU_GENERIC, OP_ENTER_COMMAND);
-      km_bindkey(":", MENU_PAGER, OP_ENTER_COMMAND);
-      if (i != MENU_EDITOR)
-      {
-        km_bindkey("?", i, OP_HELP);
-        km_bindkey("q", i, OP_EXIT);
-      }
 
       const char *mname = mutt_map_get_name(i, MenuNames);
       mutt_debug(LL_NOTIFY, "NT_MACRO_DELETE_ALL: %s\n", mname);
