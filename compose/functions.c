@@ -1920,6 +1920,10 @@ static int op_compose_rename_file(struct ComposeSharedData *shared, int op)
  */
 static int op_compose_send_message(struct ComposeSharedData *shared, int op)
 {
+  enum QuadOption send_ans = query_quadoption(_("Send this message?"), shared->sub, "ask_send");
+  if (send_ans == MUTT_ABORT || send_ans == MUTT_NO)
+    return FR_NO_ACTION;
+
   /* Note: We don't invoke send2-hook here, since we want to leave
    * users an opportunity to change settings from the ":" prompt.  */
   if (check_attachments(shared->adata->actx, shared->sub) != 0)

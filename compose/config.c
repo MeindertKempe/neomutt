@@ -59,6 +59,9 @@ static struct ConfigDef ComposeVars[] = {
   { "postpone", DT_QUAD, MUTT_ASKYES, 0, NULL,
     "Save messages to the `$postponed` folder"
   },
+  { "ask_send", DT_QUAD, MUTT_YES, 0, NULL,
+    "Ask user whether to send message."
+  },
   { NULL },
   // clang-format on
 };
